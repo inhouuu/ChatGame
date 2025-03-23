@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Game 0.1</title>
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <div class="profile">
+            <h1>ESCOLHA UM NICK E AVATAR</h1>
+            <div class="avatar-profile">
+                <div class="avatar"></div>
+            </div>
+            <div class="inputs-profile">
+                <label>
+                    <div class="icon-label">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 24 24"
+                            fill="none">
+                            <g>
+                                <path
+                                    d="M5 21C5 17.134 8.13401 14 12 14C15.866 14 19 17.134 19 21M16 7C16 9.20914 14.2091 11 12 11C9.79086 11 8 9.20914 8 7C8 4.79086 9.79086 3 12 3C14.2091 3 16 4.79086 16 7Z"
+                                    stroke="#ffff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+                            </g>
+                        </svg>
+                    </div>
+                    <span>NICK:</span>
+                </label>
+                <input type="text" id="namePlayer" />
+            </div>
+
+            <div class="options">
+                <button id="joinRoom">SALAS</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        const socket = io();
+
+        //ELEMENTOS PARA MANIPULÇÃO DOM
+        const namePlayer = document.getElementById('namePlayer');
+        const nameRoom = document.getElementById('nameRoom');
+        const joinRoom = document.getElementById('joinRoom');
+        const result = document.getElementById('result');
+
+        joinRoom.addEventListener('click', (event) => {
+            console.log('click')
+            event.preventDefault();
+            //DADOS PARA REGISTRAR SALA
+            // if (namePlayer.value && nameRoom.value) {
+            // }
+            socket.emit('join romm', {
+                name: namePlayer.value,
+                // room: nameRoom.value,
+                id: socket.id
+            });
+        });
+
+        //CALLBACK AO ENTRAR NA SALA
+        socket.on('entrou na sala', (msg) => {
+            result.value = msg;
+        });
+
+        socket.on('list rooms', (list) => {
+        });
+    </script>
+</body>
+
+</html>

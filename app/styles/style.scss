@@ -1,0 +1,112 @@
+// PALETA DE CORES
+// #005c81
+// #d40f60
+// #f84339
+// #e79a32
+// #368986
+
+* {
+    font-family: 'Poppins';
+}
+
+body {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+.container {
+    padding: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: #e79a32;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .profile {
+        color: white;
+        background-color: #d40f60;
+        border-radius: 20px;
+        padding: 25px;
+        display: inherit;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 30px;
+
+        h1 {
+            font-size: 20px;
+            margin: 0;
+        }
+
+        .avatar-profile {
+            .avatar {
+                width: 120px;
+                height: 120px;
+                border: 3px solid white;
+                border-radius: 50%;
+                transition: 0.5s all;
+                cursor: pointer;
+                background-image: url("../perfil.png");
+                background-repeat: no-repeat;
+                background-position: center;
+                background-size: cover;
+            }
+
+            .avatar:hover {
+                opacity: 0.5;
+            }
+        }
+
+        .inputs-profile {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+
+            label {
+                display: flex;
+                align-items: center;
+                gap: 5px;
+                font-weight: bolder;
+
+                .icon-label {
+                    display: flex;
+                }
+            }
+
+            input {
+                border: 3px solid white;
+                border-radius: 10px;
+                padding: 5px;
+                width: 100%;
+                outline-style: none;
+                background: none;
+                color: white;
+                font-weight: bolder;
+            }
+        }
+
+        .options {
+            width: 100%;
+
+            button {
+                font-size: 16px;
+                font-weight: bolder;
+                width: 100%;
+                padding: 10px;
+                border-radius: 10px;
+                border: none;
+                outline: none;
+                cursor: pointer;
+                background-color: #368986;
+                color: white;
+                transition: 0.3s all;
+
+                &:hover {
+                    background-color: #005c81;
+                }
+            }
+        }
+    }
+}
